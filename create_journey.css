@@ -1,0 +1,150 @@
+:root {
+    --parchment: #EADCB6;
+    --parchment-light: #F4EECA;
+    --leather: #3E2723;
+    --leather-dark: #1A0F0D;
+    --ink: #2B2824;
+    --gold: #C49A52;
+    --blue: #48B8D0;
+    --red: #D96A6A;
+}
+
+body {
+    background-color: var(--parchment);
+    color: var(--ink);
+    font-family: 'Lora', serif;
+    background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.08) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, .font-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.navbar {
+    background-color: var(--leather);
+    border-bottom: 3px solid var(--gold);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.navbar-brand, .nav-link { color: var(--parchment) !important; }
+
+.creation-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.character-sheet {
+    background-color: var(--parchment-light);
+    border: 8px solid var(--leather-dark);
+    border-radius: 4px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: inset 0 0 40px rgba(139, 115, 85, 0.2), 0 15px 30px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+.character-sheet::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 2px solid var(--gold);
+    pointer-events: none;
+}
+
+.sheet-title {
+    color: var(--leather-dark);
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--leather);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.rpg-input, .rpg-select {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px dashed var(--leather);
+    padding: 0.5rem;
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.rpg-input:focus, .rpg-select:focus {
+    border-bottom: 2px solid var(--gold);
+}
+
+.rpg-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%233E2723%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem top 50%;
+    background-size: 0.65rem auto;
+}
+
+.rpg-select option {
+    background-color: var(--parchment-light);
+    color: var(--ink);
+}
+
+.btn-forge {
+    background-color: var(--leather-dark);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-forge:hover {
+    background-color: var(--gold);
+    color: var(--leather-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.realm-desc {
+    font-size: 0.9rem;
+    color: rgba(43, 40, 36, 0.7);
+    font-style: italic;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.error-message {
+    color: var(--red);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
