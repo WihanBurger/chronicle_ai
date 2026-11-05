@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['custom_action'])) {
         $log_stmt->close();
 
         $api_key = "AQ.Ab8RN6KVYYkahq8mmfyvbHNNXCiCKzIR4xjk3qV4UasomKh5Wg"; 
-        $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . $api_key;
+        $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
         
         $system_prompt = "You are a Game Master for a grim tabletop RPG. The player is " . $journey['character_name'] . ", currently in the realm of " . $journey['realm_name'] . ". Action: '" . $action . "'. Describe what happens next (max 50 words). Choose one matching mood keyword for the scene from this exact list: 'castle', 'forest', 'dungeon', 'tavern', 'throne', 'library', 'swamp', 'battlefield', 'space'. You MUST respond with ONLY a valid JSON object in this exact format: {\"story\": \"your story text\", \"choices\": [{\"label\": \"Choice 1 description\", \"icon\": \"🗡️\"}, {\"label\": \"Choice 2 description\", \"icon\": \"🔍\"}, {\"label\": \"Choice 3 description\", \"icon\": \"🏃\"}], \"mood\": \"tavern\"}";
         
@@ -92,7 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['custom_action'])) {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'x-goog-api-key: ' . $api_key
+        ]);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         
